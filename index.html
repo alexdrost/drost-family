@@ -105,11 +105,33 @@
                     </a>
                 </div>
             </div>
+            <!-- HERO CAROUSEL -->
             <div class="relative fade-in" style="animation-delay: 0.2s;">
                 <div class="absolute -inset-4 bg-sage-100 rounded-2xl -rotate-2 z-0"></div>
-                <img src="alex-denise-drost-family.jpg" 
-                     alt="Alex and Denise Drost" 
-                     class="relative z-10 w-full aspect-[4/5] object-cover rounded-xl shadow-2xl">
+                <div class="relative z-10 w-full aspect-[4/5] rounded-xl shadow-2xl overflow-hidden" id="hero-carousel">
+
+                    <!-- Slides -->
+                    <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
+                        <img src="images/alex-denise-drost-family.webp"  alt="Alex and Denise Drost" class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/alex-drost-portrait.webp"       alt="Alex Drost with Henry" class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/denise-drost-portrait.webp"     alt="Denise Drost"          class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/henry-drost-goldendoodle.webp"  alt="Henry the goldendoodle" class="carousel-slide w-full h-full object-cover shrink-0">
+                    </div>
+
+                    <!-- Prev / Next arrows -->
+                    <button onclick="carouselMove(-1)" aria-label="Previous photo"
+                        class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all">
+                        <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="carouselMove(1)" aria-label="Next photo"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all">
+                        <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+
+                    <!-- Dot indicators -->
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" id="carousel-dots"></div>
+
+                </div>
             </div>
         </div>
     </header>
@@ -118,8 +140,8 @@
     <section id="alex" class="py-24 bg-white border-t border-sage-100">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
             <div class="md:col-span-5">
-                <img src="alex-drost-portrait.jpg" 
-                     alt="Alex Drost" 
+                <img src="images/alex-drost-portrait.webp"
+                     alt="Alex Drost"
                      class="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl">
             </div>
             <div class="md:col-span-7 md:pl-8">
@@ -165,8 +187,8 @@
                 </div>
             </div>
             <div class="md:col-span-5 order-1 md:order-2">
-                <img src="denise-drost-portrait.webp" 
-                     alt="Denise Drost" 
+                <img src="images/denise-drost-portrait.webp"
+                     alt="Denise Drost"
                      class="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl">
             </div>
         </div>
@@ -184,8 +206,8 @@
             <div class="grid md:grid-cols-2 gap-16 items-start">
                 <div class="relative group">
                     <div class="absolute -inset-4 bg-white/50 rounded-2xl rotate-2 transition-transform group-hover:rotate-0"></div>
-                    <img src="henry-drost-goldendoodle.jpg" 
-                         alt="Henry the Goldendoodle" 
+                    <img src="images/henry-drost-goldendoodle.webp"
+                         alt="Henry the Goldendoodle"
                          class="relative z-10 w-full aspect-[4/5] object-cover rounded-xl shadow-xl">
                 </div>
                 <div class="pt-8">
@@ -229,25 +251,25 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- PHOTO CARDS -->
-                <div class="group cursor-pointer" onclick="openModal('henry-drost-goldendoodle.jpg', 'Henry monitoring a pit stop in Northern Michigan.')">
+                <div class="group cursor-pointer" onclick="openModal('images/henry-drost-goldendoodle.webp', 'Henry monitoring a pit stop in Northern Michigan.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="henry-drost-goldendoodle.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/henry-drost-goldendoodle.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
                     </div>
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Henry's Pit Stop</p>
                 </div>
                 
-                <div class="group cursor-pointer" onclick="openModal('alex-denise-drost-family.jpg', 'Alex and Denise exploring the Detroit Historical District.')">
+                <div class="group cursor-pointer" onclick="openModal('images/alex-denise-drost-family.webp', 'Alex and Denise exploring the Detroit Historical District.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="alex-denise-drost-family.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/alex-denise-drost-family.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
                     </div>
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Detroit Excursion</p>
                 </div>
 
-                <div class="group cursor-pointer" onclick="openModal('alex-drost-portrait.jpg', 'Alex and Henry celebrating a successful hike.')">
+                <div class="group cursor-pointer" onclick="openModal('images/alex-drost-portrait.webp', 'Alex and Henry celebrating a successful hike.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="alex-drost-portrait.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="images/alex-drost-portrait.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
                     </div>
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Summit Success</p>
@@ -355,6 +377,45 @@
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
         });
+
+        // ── HERO CAROUSEL ──────────────────────────────────────────
+        (function () {
+            const track  = document.querySelector('#hero-carousel .carousel-track');
+            const slides = document.querySelectorAll('#hero-carousel .carousel-slide');
+            const dotsEl = document.getElementById('carousel-dots');
+            let current  = 0;
+            const total  = slides.length;
+
+            // Build dots
+            slides.forEach((_, i) => {
+                const d = document.createElement('button');
+                d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+                d.className = 'w-2 h-2 rounded-full transition-all duration-300 ' +
+                              (i === 0 ? 'bg-white scale-110' : 'bg-white/50');
+                d.addEventListener('click', () => goTo(i));
+                dotsEl.appendChild(d);
+            });
+
+            function goTo(index) {
+                current = (index + total) % total;
+                track.style.transform = 'translateX(-' + (current * 100) + '%)';
+                dotsEl.querySelectorAll('button').forEach((d, i) => {
+                    d.className = 'w-2 h-2 rounded-full transition-all duration-300 ' +
+                                  (i === current ? 'bg-white scale-110' : 'bg-white/50');
+                });
+            }
+
+            // Expose for arrow buttons
+            window.carouselMove = (dir) => goTo(current + dir);
+
+            // Auto-advance every 5 seconds
+            let timer = setInterval(() => goTo(current + 1), 5000);
+            document.getElementById('hero-carousel').addEventListener('mouseenter', () => clearInterval(timer));
+            document.getElementById('hero-carousel').addEventListener('mouseleave', () => {
+                timer = setInterval(() => goTo(current + 1), 5000);
+            });
+        })();
+        // ────────────────────────────────────────────────────────────
     </script>
 
 </body>
