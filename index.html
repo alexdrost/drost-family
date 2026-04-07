@@ -88,7 +88,7 @@
     <header class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
         <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
             <div class="fade-in">
-                <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-sage-600 mb-6">EST. DETROIT, MI</span>
+                <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-sage-600 mb-6">EST. 2019 &bull; DETROIT, MI</span>
                 <h1 class="text-5xl md:text-7xl font-serif text-charcoal leading-[1.1] mb-8">
                     Three Drosts. <br>
                     <span class="serif-italic">Endless road trips.</span>
@@ -112,10 +112,14 @@
 
                     <!-- Slides -->
                     <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
-                        <img src="images/alex-denise-drost-family.webp"  alt="Alex and Denise Drost" class="carousel-slide w-full h-full object-cover shrink-0">
-                        <img src="images/alex-drost-portrait.webp"       alt="Alex Drost with Henry" class="carousel-slide w-full h-full object-cover shrink-0">
-                        <img src="images/denise-drost-portrait.webp"     alt="Denise Drost"          class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/alex-denise-drost-family.webp"  alt="Alex and Denise Drost"  class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/alex-drost-portrait.webp"       alt="Alex Drost with Henry"  class="carousel-slide w-full h-full object-cover shrink-0">
+                        <img src="images/denise-drost-portrait.webp"     alt="Denise Drost"           class="carousel-slide w-full h-full object-cover shrink-0">
                         <img src="images/henry-drost-goldendoodle.webp"  alt="Henry the goldendoodle" class="carousel-slide w-full h-full object-cover shrink-0">
+                        <!-- Slide 5 — replace with images/hero-5.webp when photo is ready -->
+                        <div class="carousel-slide w-full h-full shrink-0 bg-sage-100 flex items-center justify-center">
+                            <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
+                        </div>
                     </div>
 
                     <!-- Prev / Next arrows -->
@@ -129,7 +133,7 @@
                     </button>
 
                     <!-- Dot indicators -->
-                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" id="carousel-dots"></div>
+                    <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
 
                 </div>
             </div>
@@ -206,9 +210,29 @@
             <div class="grid md:grid-cols-2 gap-16 items-start">
                 <div class="relative group">
                     <div class="absolute -inset-4 bg-white/50 rounded-2xl rotate-2 transition-transform group-hover:rotate-0"></div>
-                    <img src="images/henry-drost-goldendoodle.webp"
-                         alt="Henry the Goldendoodle"
-                         class="relative z-10 w-full aspect-[4/5] object-cover rounded-xl shadow-xl">
+                    <!-- Henry carousel -->
+                    <div class="relative z-10 w-full aspect-[4/5] rounded-xl shadow-xl overflow-hidden" id="henry-carousel">
+                        <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
+                            <img src="images/henry-drost-goldendoodle.webp" alt="Henry the Goldendoodle" class="carousel-slide w-full h-full object-cover shrink-0">
+                            <!-- Slide 2 — replace with images/henry-2.webp when ready -->
+                            <div class="carousel-slide w-full h-full shrink-0 bg-sage-200 flex items-center justify-center">
+                                <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
+                            </div>
+                            <!-- Slide 3 — replace with images/henry-3.webp when ready -->
+                            <div class="carousel-slide w-full h-full shrink-0 bg-sage-200 flex items-center justify-center">
+                                <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
+                            </div>
+                        </div>
+                        <button onclick="henryCarouselMove(-1)" aria-label="Previous photo"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all z-10">
+                            <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <button onclick="henryCarouselMove(1)" aria-label="Next photo"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all z-10">
+                            <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+                    </div>
                 </div>
                 <div class="pt-8">
                     <p class="text-xl leading-relaxed text-charcoal/80 mb-12">
@@ -232,6 +256,14 @@
                             <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Territory</span>
                             <span class="text-charcoal font-medium">Metro Detroit & The Great Beyond</span>
                         </div>
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Known For</span>
+                            <span class="text-charcoal font-medium">Road trips, meeting strangers, extraordinary enthusiasm</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Current Status</span>
+                            <span class="text-charcoal font-medium">Monitoring the kitchen for opportunities</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,7 +282,8 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- PHOTO CARDS -->
+
+                <!-- Card 1 -->
                 <div class="group cursor-pointer" onclick="openModal('images/henry-drost-goldendoodle.webp', 'Henry monitoring a pit stop in Northern Michigan.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
                         <img src="images/henry-drost-goldendoodle.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -258,7 +291,8 @@
                     </div>
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Henry's Pit Stop</p>
                 </div>
-                
+
+                <!-- Card 2 -->
                 <div class="group cursor-pointer" onclick="openModal('images/alex-denise-drost-family.webp', 'Alex and Denise exploring the Detroit Historical District.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
                         <img src="images/alex-denise-drost-family.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -267,6 +301,7 @@
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Detroit Excursion</p>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="group cursor-pointer" onclick="openModal('images/alex-drost-portrait.webp', 'Alex and Henry celebrating a successful hike.')">
                     <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
                         <img src="images/alex-drost-portrait.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -274,6 +309,50 @@
                     </div>
                     <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Summit Success</p>
                 </div>
+
+                <!-- Cards 4–9: placeholders — swap src for images/adventure-4.webp etc. when photos are ready -->
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 4</p>
+                </div>
+
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 5</p>
+                </div>
+
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 6</p>
+                </div>
+
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 7</p>
+                </div>
+
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 8</p>
+                </div>
+
+                <div class="group">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
+                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 9</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -303,10 +382,10 @@
                 <div class="space-y-12">
                     <div class="flex gap-8">
                         <div class="w-12 h-12 rounded-full bg-sage-600 text-white flex items-center justify-center shrink-0">
-                            <span class="font-serif italic text-xl">A</span>
+                            <span class="font-serif italic text-sm tracking-tight">AD</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Alex</h3>
+                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Alex Drost</h3>
                             <ul class="space-y-3">
                                 <li><a href="https://alexdrost.com" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">alexdrost.com <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
                                 <li><a href="https://www.linkedin.com/in/adrost/" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">LinkedIn <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
@@ -316,10 +395,10 @@
 
                     <div class="flex gap-8">
                         <div class="w-12 h-12 rounded-full bg-sage-600 text-white flex items-center justify-center shrink-0">
-                            <span class="font-serif italic text-xl">D</span>
+<span class="font-serif italic text-sm tracking-tight">DD</span>
                         </div>
                         <div>
-                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Denise</h3>
+                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Denise Drost</h3>
                             <ul class="space-y-3">
                                 <li><a href="https://denisedrost.com" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">denisedrost.com <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
                                 <li><a href="https://www.linkedin.com/in/denisemdrost/" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">LinkedIn <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
@@ -378,15 +457,16 @@
             if (e.key === 'Escape') closeModal();
         });
 
-        // ── HERO CAROUSEL ──────────────────────────────────────────
-        (function () {
-            const track  = document.querySelector('#hero-carousel .carousel-track');
-            const slides = document.querySelectorAll('#hero-carousel .carousel-slide');
-            const dotsEl = document.getElementById('carousel-dots');
+        // ── CAROUSEL FACTORY ───────────────────────────────────────
+        function initCarousel(containerId, interval) {
+            const container = document.getElementById(containerId);
+            if (!container) return { move: () => {} };
+            const track  = container.querySelector('.carousel-track');
+            const slides = container.querySelectorAll('.carousel-slide');
+            const dotsEl = container.querySelector('.carousel-dots');
             let current  = 0;
             const total  = slides.length;
 
-            // Build dots
             slides.forEach((_, i) => {
                 const d = document.createElement('button');
                 d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
@@ -405,16 +485,20 @@
                 });
             }
 
-            // Expose for arrow buttons
-            window.carouselMove = (dir) => goTo(current + dir);
-
-            // Auto-advance every 5 seconds
-            let timer = setInterval(() => goTo(current + 1), 5000);
-            document.getElementById('hero-carousel').addEventListener('mouseenter', () => clearInterval(timer));
-            document.getElementById('hero-carousel').addEventListener('mouseleave', () => {
-                timer = setInterval(() => goTo(current + 1), 5000);
+            let timer = setInterval(() => goTo(current + 1), interval || 5000);
+            container.addEventListener('mouseenter', () => clearInterval(timer));
+            container.addEventListener('mouseleave', () => {
+                timer = setInterval(() => goTo(current + 1), interval || 5000);
             });
-        })();
+
+            return { move: (dir) => goTo(current + dir) };
+        }
+
+        const heroCarousel  = initCarousel('hero-carousel', 5000);
+        window.carouselMove = (dir) => heroCarousel.move(dir);
+
+        const henryCarousel      = initCarousel('henry-carousel', 6000);
+        window.henryCarouselMove = (dir) => henryCarousel.move(dir);
         // ────────────────────────────────────────────────────────────
     </script>
 
