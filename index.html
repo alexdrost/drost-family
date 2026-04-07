@@ -1,0 +1,759 @@
+<!-- drost.family | repo: drost-family | Cloudflare Pages project: drost-family -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Drost Family — Alex, Denise &amp; Henry | drost.family</title>
+  <meta name="description" content="Alex and Denise Drost are Detroit-area professionals and avid road-trippers with a goldendoodle named Henry. Drost.family is their personal corner of the web.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2A2A24;
+      background: #FAFBF7;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    a { color: inherit; }
+
+    /* =============================================
+       DESIGN TOKENS
+    ============================================= */
+    :root {
+      --bg:           #FAFBF7;
+      --bg-ivory:     #F5F3EE;
+      --bg-sage:      #EDF3E8;
+      --sage:         #4A7A40;
+      --sage-dark:    #3d6634;
+      --amber:        #D4920A;
+      --text:         #2A2A24;
+      --text-muted:   #7A8070;
+      --border:       #D0DCC8;
+      --eyebrow-col:  #7A8A6A;
+      --footer-bg:    #EDEEE8;
+      --max-w:        1100px;
+    }
+
+    /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+    h1, h2, h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      color: #2A2A24;
+    }
+
+    .eyebrow {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7A8A6A;
+      margin-bottom: 14px;
+    }
+
+    .person-subtitle {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-style: italic;
+      color: #7A8070;
+      margin-top: 3px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #2A2A24;
+      margin-bottom: 16px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* =============================================
+       LAYOUT
+    ============================================= */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    section { padding: 88px 0; }
+
+    /* =============================================
+       PHOTO PLACEHOLDERS
+       Used only for Adventures grid until road trip photos arrive.
+    ============================================= */
+    .placeholder {
+      background: #D0DCC8;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .placeholder span {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #7A8070;
+      line-height: 1.6;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn-sage {
+      display: inline-block;
+      background: #4A7A40;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 13px 30px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.15s ease;
+    }
+
+    .btn-sage:hover { background: #3d6634; }
+
+    /* =============================================
+       PROFESSIONAL LINKS
+    ============================================= */
+    .pro-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 22px;
+    }
+
+    .pro-link {
+      display: inline-block;
+      font-size: 13px;
+      color: #7A8A6A;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease;
+      width: fit-content;
+    }
+
+    .pro-link:hover { border-color: #7A8A6A; }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    nav {
+      background: #FAFBF7;
+      border-bottom: 1px solid #D0DCC8;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand { text-decoration: none; }
+
+    .nav-name {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: #2A2A24;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .nav-tagline {
+      font-size: 11px;
+      font-style: italic;
+      color: #7A8070;
+      display: block;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: #2A2A24;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: #4A7A40; }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      background: #FAFBF7;
+      padding: 80px 0 100px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .hero-h1 {
+      font-size: 50px;
+      line-height: 1.13;
+      margin-bottom: 22px;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #2A2A24;
+      margin-bottom: 38px;
+    }
+
+    .hero-photo {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    /* =============================================
+       BIO SECTIONS — SHARED
+    ============================================= */
+    .bio-grid {
+      display: grid;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .bio-grid.photo-left  { grid-template-columns: 36fr 64fr; }
+    .bio-grid.photo-right { grid-template-columns: 64fr 36fr; }
+
+    .bio-photo {
+      aspect-ratio: 3 / 4;
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .bio-name {
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    /* =============================================
+       ABOUT — ALEX
+    ============================================= */
+    #alex { background: #fff; }
+
+    /* =============================================
+       ABOUT — DENISE
+    ============================================= */
+    #denise { background: #F5F3EE; }
+
+    /* =============================================
+       HENRY
+    ============================================= */
+    #henry { background: #EDF3E8; }
+
+    .henry-intro {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 60px;
+    }
+
+    .henry-intro h2 {
+      font-size: 38px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .henry-intro .intro-sub {
+      font-size: 15px;
+      color: #7A8070;
+      font-style: italic;
+    }
+
+    .henry-grid {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .henry-photo {
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      border-radius: 6px;
+    }
+
+    .henry-body p {
+      font-size: 15px;
+      color: #2A2A24;
+      margin-bottom: 32px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid #D0DCC8;
+      border-radius: 4px;
+      padding: 16px 18px;
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7A8A6A;
+      margin-bottom: 5px;
+    }
+
+    .stat-value {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #2A2A24;
+    }
+
+    /* =============================================
+       ADVENTURES
+    ============================================= */
+    #adventures { background: #fff; }
+
+    .section-intro { max-width: 620px; margin-bottom: 48px; }
+
+    .section-intro h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-intro .tagline {
+      font-size: 15px;
+      color: #7A8070;
+      font-style: italic;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-photo {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      border-radius: 4px;
+      margin-bottom: 9px;
+    }
+
+    .grid-caption {
+      font-size: 12px;
+      color: #7A8070;
+      letter-spacing: 0.03em;
+    }
+
+    /* =============================================
+       FIND US
+    ============================================= */
+    #find-us { background: #F5F3EE; }
+
+    .find-us-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .find-us-left h2 {
+      font-size: 38px;
+      margin-bottom: 36px;
+    }
+
+    .find-us-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .find-us-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #2A2A24;
+      margin-bottom: 10px;
+    }
+
+    .link-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .link-list a {
+      font-size: 14px;
+      color: #7A8A6A;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .link-list a:hover { color: #4A7A40; }
+
+    .find-us-map {
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid #D0DCC8;
+      height: 260px;
+    }
+
+    .find-us-map iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: #EDEEE8;
+      padding: 28px 48px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: #7A8070;
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 800px) {
+      .wrap, .nav-inner { padding: 0 24px; }
+      section { padding: 64px 0; }
+      .nav-links { display: none; }
+
+      #hero { padding: 56px 0 72px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+      .hero-photo { order: -1; max-height: 300px; }
+      .hero-h1 { font-size: 36px; }
+
+      .bio-grid.photo-left,
+      .bio-grid.photo-right { grid-template-columns: 1fr; gap: 32px; }
+      .bio-grid.photo-right .bio-photo { order: -1; }
+      .bio-photo { max-height: 280px; }
+
+      .henry-grid { grid-template-columns: 1fr; gap: 36px; }
+      .henry-photo { max-height: 300px; }
+
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .find-us-grid { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 28px 24px; }
+    }
+
+    @media (max-width: 520px) {
+      .photo-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVIGATION
+  ============================================= -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-name">Drost.family</span>
+        <span class="nav-tagline">Alex, Denise &amp; Henry</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#alex">Alex</a></li>
+        <li><a href="#denise">Denise</a></li>
+        <li><a href="#henry">Henry</a></li>
+        <li><a href="#adventures">Adventures</a></li>
+        <li><a href="#find-us">Find Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       HERO
+  ============================================= -->
+  <section id="hero" aria-label="Hero">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <div class="hero-text">
+          <span class="eyebrow">Alex &middot; Denise &middot; Henry</span>
+          <h1 class="hero-h1">Three Drosts.<br>Plenty of adventures.</h1>
+          <p class="hero-sub">A Detroit-area family with deep roots in the middle-market professional world, a shared appreciation for a good road trip, and a goldendoodle who has developed strong opinions about which rest stops are worth stopping at.</p>
+          <a href="#alex" class="btn-sage">Meet the family</a>
+        </div>
+
+        <!-- Replace with three-together photo when available -->
+        <img
+          src="images/alex-denise-drost-family.webp"
+          alt="Alex and Denise Drost — Detroit-area family"
+          class="hero-photo">
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ABOUT — ALEX
+  ============================================= -->
+  <div id="about-us"></div>
+  <section id="alex" aria-labelledby="alex-heading">
+    <div class="wrap">
+      <div class="bio-grid photo-left">
+
+        <img
+          src="images/alex-drost-portrait.webp"
+          alt="Alex Drost — Detroit-area professional"
+          class="bio-photo">
+
+        <div class="bio-text">
+          <h2 class="bio-name" id="alex-heading">Alex Drost</h2>
+          <span class="person-subtitle">The one with the audiobooks.</span>
+          <p>Alex works in the middle-market professional world and has spent the better part of two decades thinking about companies, the people who run them, and what it takes to build something that lasts. He does not talk about work at parties.</p>
+          <p>Outside the office, he is most likely somewhere on I-75 with Henry in the passenger seat and an audiobook queued up. He has developed strong opinions about rest stops, the precise right moment to stop for gas, and whether a given road trip qualifies as a &#8220;real&#8221; road trip &#8212; criteria he has not yet fully published.</p>
+          <div class="pro-links">
+            <a href="https://alexdrost.com" class="pro-link" target="_blank" rel="noopener">Personal Website &#8599;</a>
+            <a href="#" class="pro-link" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a><!-- TODO: Add Alex's LinkedIn URL -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ABOUT — DENISE
+  ============================================= -->
+  <section id="denise" aria-labelledby="denise-heading">
+    <div class="wrap">
+      <div class="bio-grid photo-right">
+
+        <div class="bio-text">
+          <h2 class="bio-name" id="denise-heading">Denise Drost</h2>
+          <span class="person-subtitle">The one who actually plans things.</span>
+          <!-- TODO: Replace with Denise's actual bio copy -->
+          <p>Denise is a Detroit-area professional with a background that she will describe far better than a placeholder can. What is not in question is that she is the reason the family&#8217;s road trips have an itinerary, the right snacks, and a contingency plan for when the original plan encounters Henry&#8217;s opinions about rest stops.</p>
+          <p>She keeps things running with a level of organizational clarity that Alex finds both impressive and slightly humbling. Henry regards her primarily as the person most likely to share a snack without being formally asked.</p>
+          <div class="pro-links">
+            <a href="https://denisestross.com" class="pro-link" target="_blank" rel="noopener">Personal Website &#8599;</a>
+            <a href="#" class="pro-link" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a><!-- TODO: Add Denise's LinkedIn URL -->
+          </div>
+        </div>
+
+        <img
+          src="images/denise-drost-portrait.webp"
+          alt="Denise Drost — Detroit-area professional"
+          class="bio-photo">
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       HENRY
+  ============================================= -->
+  <section id="henry" aria-labelledby="henry-heading">
+    <div class="wrap">
+
+      <div class="henry-intro">
+        <span class="eyebrow">The co-pilot</span>
+        <h2 id="henry-heading">Goldendoodle. Co-pilot.<br>Professional greeter.</h2>
+        <p class="intro-sub">A full section, because he has earned it.</p>
+      </div>
+
+      <div class="henry-grid">
+
+        <img
+          src="images/henry-drost-goldendoodle.webp"
+          alt="Henry — the Drost family goldendoodle"
+          class="henry-photo">
+
+        <div class="henry-body">
+          <p>Henry is a goldendoodle with an extraordinary personality and a geographic footprint that most people would envy. He has logged more highway miles than most adults and has strong, non-negotiable opinions about the optimal rest stop experience. His interests include car rides (any duration, any destination), meeting new people (always), hiking (enthusiastically), and monitoring the kitchen for opportunities (constantly).</p>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Breed</span>
+              <span class="stat-value">Goldendoodle (mostly poodle)</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Occupation</span>
+              <span class="stat-value">Co-pilot, morale officer, professional greeter</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Known for</span>
+              <span class="stat-value">Road trips, meeting strangers, extraordinary enthusiasm</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Territory</span>
+              <span class="stat-value">The Midwest, broadly. Detroit area, specifically.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       ADVENTURES
+       Omit this section at launch if road trip photos aren't ready.
+       Replace each .placeholder div with an <img> tag and update captions.
+  ============================================= -->
+  <section id="adventures" aria-labelledby="adventures-heading">
+    <div class="wrap">
+
+      <div class="section-intro">
+        <span class="eyebrow">On the road</span>
+        <h2 id="adventures-heading">Adventures</h2>
+        <p class="tagline">Henry has a standing policy: if the car is moving, he is in it.</p>
+      </div>
+
+      <div class="photo-grid">
+
+        <div>
+          <!-- TODO: <img src="images/drost-family-road-trip-[location].jpg" alt="Drost family road trip — [Location]" class="grid-photo"> -->
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 1</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+        <div>
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 2</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+        <div>
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 3</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+        <div>
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 4</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+        <div>
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 5</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+        <div>
+          <div class="placeholder grid-photo"><span>Road trip<br>photo 6</span></div>
+          <p class="grid-caption">Location TBD</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FIND US
+  ============================================= -->
+  <section id="find-us" aria-labelledby="find-us-heading">
+    <div class="wrap">
+      <div class="find-us-grid">
+
+        <div class="find-us-left">
+          <h2 id="find-us-heading">Find Us</h2>
+
+          <div class="find-us-cards">
+            <div class="find-us-card">
+              <h3>Alex</h3>
+              <ul class="link-list">
+                <li><a href="https://alexdrost.com" target="_blank" rel="noopener">Personal Website &#8599;</a></li>
+                <li><a href="#" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a></li><!-- TODO: Add Alex's LinkedIn URL -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metro Detroit map -->
+        <div class="find-us-map">
+          <iframe
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-83.35%2C42.22%2C-82.88%2C42.52&amp;layer=mapnik"
+            loading="lazy"
+            title="Metro Detroit, Michigan"
+            aria-label="Map showing Metro Detroit, Michigan"></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       FOOTER
+  ============================================= -->
+  <footer>
+    <p class="footer-text">&copy; Alex Drost &middot; Detroit, Michigan</p>
+  </footer>
+
+
+</body>
+</html>
