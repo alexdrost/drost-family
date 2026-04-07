@@ -1,768 +1,361 @@
-<!-- drost.family | repo: drost-family | Cloudflare Pages project: drost-family -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Drost Family — Alex, Denise &amp; Henry | drost.family</title>
-  <meta name="description" content="Alex and Denise Drost are Detroit-area professionals and avid road-trippers with a goldendoodle named Henry. Drost.family is their personal corner of the web.">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-
-    /* =============================================
-       RESET & BASE
-    ============================================= */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 15px;
-      line-height: 1.8;
-      color: #2A2A24;
-      background: #FAFBF7;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    a { color: inherit; }
-
-    /* =============================================
-       DESIGN TOKENS
-    ============================================= */
-    :root {
-      --bg:           #FAFBF7;
-      --bg-ivory:     #F5F3EE;
-      --bg-sage:      #EDF3E8;
-      --sage:         #4A7A40;
-      --sage-dark:    #3d6634;
-      --amber:        #D4920A;
-      --text:         #2A2A24;
-      --text-muted:   #7A8070;
-      --border:       #D0DCC8;
-      --eyebrow-col:  #7A8A6A;
-      --footer-bg:    #EDEEE8;
-      --max-w:        1100px;
-    }
-
-    /* =============================================
-       TYPOGRAPHY
-    ============================================= */
-    h1, h2, h3 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-weight: 400;
-      color: #2A2A24;
-    }
-
-    .eyebrow {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7A8A6A;
-      margin-bottom: 14px;
-    }
-
-    .person-subtitle {
-      display: block;
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-style: italic;
-      color: #7A8070;
-      margin-top: 3px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 15px;
-      line-height: 1.8;
-      color: #2A2A24;
-      margin-bottom: 16px;
-    }
-
-    p:last-child { margin-bottom: 0; }
-
-    /* =============================================
-       LAYOUT
-    ============================================= */
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    section { padding: 88px 0; }
-
-    /* =============================================
-       PHOTO PLACEHOLDERS
-       Used only for Adventures grid until road trip photos arrive.
-    ============================================= */
-    .placeholder {
-      background: #D0DCC8;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .placeholder span {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #7A8070;
-      line-height: 1.6;
-    }
-
-    /* =============================================
-       BUTTONS
-    ============================================= */
-    .btn-sage {
-      display: inline-block;
-      background: #4A7A40;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 13px 30px;
-      border-radius: 3px;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: background 0.15s ease;
-    }
-
-    .btn-sage:hover { background: #3d6634; }
-
-    /* =============================================
-       PROFESSIONAL LINKS
-    ============================================= */
-    .pro-links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 22px;
-    }
-
-    .pro-link {
-      display: inline-block;
-      font-size: 13px;
-      color: #7A8A6A;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.15s ease;
-      width: fit-content;
-    }
-
-    .pro-link:hover { border-color: #7A8A6A; }
-
-    /* =============================================
-       NAVIGATION
-    ============================================= */
-    nav {
-      background: #FAFBF7;
-      border-bottom: 1px solid #D0DCC8;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 48px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand { text-decoration: none; }
-
-    .nav-name {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      color: #2A2A24;
-      display: block;
-      line-height: 1.2;
-    }
-
-    .nav-tagline {
-      font-size: 11px;
-      font-style: italic;
-      color: #7A8070;
-      display: block;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      color: #2A2A24;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: #4A7A40; }
-
-    /* =============================================
-       HERO
-    ============================================= */
-    #hero {
-      background: #FAFBF7;
-      padding: 80px 0 100px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 55fr 45fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .hero-h1 {
-      font-size: 50px;
-      line-height: 1.13;
-      margin-bottom: 22px;
-    }
-
-    .hero-sub {
-      font-size: 16px;
-      line-height: 1.75;
-      color: #2A2A24;
-      margin-bottom: 38px;
-    }
-
-    .hero-photo {
-      aspect-ratio: 4 / 5;
-      width: 100%;
-      border-radius: 6px;
-    }
-
-    /* =============================================
-       BIO SECTIONS — SHARED
-    ============================================= */
-    .bio-grid {
-      display: grid;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .bio-grid.photo-left  { grid-template-columns: 36fr 64fr; }
-    .bio-grid.photo-right { grid-template-columns: 64fr 36fr; }
-
-    .bio-photo {
-      aspect-ratio: 3 / 4;
-      width: 100%;
-      border-radius: 5px;
-    }
-
-    .bio-name {
-      font-size: 30px;
-      line-height: 1.2;
-    }
-
-    /* =============================================
-       ABOUT — ALEX
-    ============================================= */
-    #alex { background: #fff; }
-
-    /* =============================================
-       ABOUT — DENISE
-    ============================================= */
-    #denise { background: #F5F3EE; }
-
-    /* =============================================
-       HENRY
-    ============================================= */
-    #henry { background: #EDF3E8; }
-
-    .henry-intro {
-      text-align: center;
-      max-width: 580px;
-      margin: 0 auto 60px;
-    }
-
-    .henry-intro h2 {
-      font-size: 38px;
-      line-height: 1.2;
-      margin-bottom: 10px;
-    }
-
-    .henry-intro .intro-sub {
-      font-size: 15px;
-      color: #7A8070;
-      font-style: italic;
-    }
-
-    .henry-grid {
-      display: grid;
-      grid-template-columns: 45fr 55fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .henry-photo {
-      aspect-ratio: 4 / 5;
-      width: 100%;
-      border-radius: 6px;
-    }
-
-    .henry-body p {
-      font-size: 15px;
-      color: #2A2A24;
-      margin-bottom: 32px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .stat-card {
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid #D0DCC8;
-      border-radius: 4px;
-      padding: 16px 18px;
-    }
-
-    .stat-label {
-      display: block;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #7A8A6A;
-      margin-bottom: 5px;
-    }
-
-    .stat-value {
-      font-size: 13px;
-      line-height: 1.5;
-      color: #2A2A24;
-    }
-
-    /* =============================================
-       ADVENTURES
-    ============================================= */
-    #adventures { background: #fff; }
-
-    .section-intro { max-width: 620px; margin-bottom: 48px; }
-
-    .section-intro h2 {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
-
-    .section-intro .tagline {
-      font-size: 15px;
-      color: #7A8070;
-      font-style: italic;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .grid-photo {
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      border-radius: 4px;
-      margin-bottom: 9px;
-    }
-
-    .grid-caption {
-      font-size: 12px;
-      color: #7A8070;
-      letter-spacing: 0.03em;
-    }
-
-    /* =============================================
-       FIND US
-    ============================================= */
-    #find-us { background: #F5F3EE; }
-
-    .find-us-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: start;
-    }
-
-    .find-us-left h2 {
-      font-size: 38px;
-      margin-bottom: 36px;
-    }
-
-    .find-us-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .find-us-card h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: #2A2A24;
-      margin-bottom: 10px;
-    }
-
-    .link-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .link-list a {
-      font-size: 14px;
-      color: #7A8A6A;
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .link-list a:hover { color: #4A7A40; }
-
-    .find-us-map {
-      border-radius: 5px;
-      overflow: hidden;
-      border: 1px solid #D0DCC8;
-      height: 260px;
-    }
-
-    .find-us-map iframe {
-      width: 100%;
-      height: 100%;
-      display: block;
-      border: none;
-    }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    footer {
-      background: #EDEEE8;
-      padding: 28px 48px;
-      text-align: center;
-    }
-
-    .footer-text {
-      font-size: 13px;
-      color: #7A8070;
-    }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 800px) {
-      .wrap, .nav-inner { padding: 0 24px; }
-      section { padding: 64px 0; }
-      .nav-links { display: none; }
-
-      #hero { padding: 56px 0 72px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-      .hero-photo { order: -1; max-height: 300px; }
-      .hero-h1 { font-size: 36px; }
-
-      .bio-grid.photo-left,
-      .bio-grid.photo-right { grid-template-columns: 1fr; gap: 32px; }
-      .bio-grid.photo-right .bio-photo { order: -1; }
-      .bio-photo { max-height: 280px; }
-
-      .henry-grid { grid-template-columns: 1fr; gap: 36px; }
-      .henry-photo { max-height: 300px; }
-
-      .photo-grid { grid-template-columns: 1fr 1fr; }
-      .find-us-grid { grid-template-columns: 1fr; gap: 32px; }
-      footer { padding: 28px 24px; }
-    }
-
-    @media (max-width: 520px) {
-      .photo-grid { grid-template-columns: 1fr; }
-      .stats-grid { grid-template-columns: 1fr; }
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Drost Family — Alex, Denise & Henry | drost.family</title>
+    <meta name="description" content="Alex and Denise Drost are Detroit-area professionals and avid road-trippers with a goldendoodle named Henry.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f2',
+                            100: '#e7ede2',
+                            200: '#D0DCC8',
+                            600: '#4A7A40',
+                            700: '#3d6634',
+                            800: '#32522b',
+                        },
+                        ivory: '#FAFBF7',
+                        charcoal: '#2A2A24',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #FAFBF7; color: #2A2A24; }
+        .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FAFBF7; }
+        ::-webkit-scrollbar-thumb { background: #D0DCC8; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4A7A40; }
+
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Modal specific styles */
+        #photo-modal.hidden { display: none; }
+        #photo-modal.flex { display: flex; }
+    </style>
 </head>
-<body>
+<body class="antialiased selection:bg-sage-200">
 
-  <!-- =============================================
-       NAVIGATION
-  ============================================= -->
-  <nav aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="#" class="nav-brand">
-        <span class="nav-name">Drost.family</span>
-        <span class="nav-tagline">Alex, Denise &amp; Henry</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#alex">Alex</a></li>
-        <li><a href="#denise">Denise</a></li>
-        <li><a href="#henry">Henry</a></li>
-        <li><a href="#adventures">Adventures</a></li>
-        <li><a href="#find-us">Find Us</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-ivory/80 backdrop-blur-md border-b border-sage-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="group">
+                <span class="block font-serif text-2xl tracking-tight text-charcoal leading-none">Drost.family</span>
+                <span class="block text-[10px] uppercase tracking-widest text-sage-600 mt-1 font-medium group-hover:text-sage-800 transition-colors">Alex &bull; Denise &bull; Henry</span>
+            </a>
+            
+            <ul class="hidden md:flex space-x-10 text-sm font-medium tracking-wide text-charcoal/70">
+                <li><a href="#alex" class="hover:text-sage-600 transition-colors">Alex</a></li>
+                <li><a href="#denise" class="hover:text-sage-600 transition-colors">Denise</a></li>
+                <li><a href="#henry" class="hover:text-sage-600 transition-colors">Henry</a></li>
+                <li><a href="#adventures" class="hover:text-sage-600 transition-colors">Adventures</a></li>
+            </ul>
 
-
-  <!-- =============================================
-       HERO
-  ============================================= -->
-  <section id="hero" aria-label="Hero">
-    <div class="wrap">
-      <div class="hero-grid">
-
-        <div class="hero-text">
-          <span class="eyebrow">Alex &middot; Denise &middot; Henry</span>
-          <h1 class="hero-h1">Three Drosts.<br>Plenty of adventures.</h1>
-          <p class="hero-sub">A Detroit-area family with deep roots in the middle-market professional world, a shared appreciation for a good road trip, and a goldendoodle who has developed strong opinions about which rest stops are worth stopping at.</p>
-          <a href="#alex" class="btn-sage">Meet the family</a>
+            <button class="md:hidden text-charcoal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                </svg>
+            </button>
         </div>
+    </nav>
 
-        <!-- Replace with three-together photo when available -->
-        <img
-          src="images/alex-denise-drost-family.webp"
-          alt="Alex and Denise Drost — Detroit-area family"
-          class="hero-photo">
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =============================================
-       ABOUT — ALEX
-  ============================================= -->
-  <div id="about-us"></div>
-  <section id="alex" aria-labelledby="alex-heading">
-    <div class="wrap">
-      <div class="bio-grid photo-left">
-
-        <img
-          src="images/alex-drost-portrait.webp"
-          alt="Alex Drost — Detroit-area professional"
-          class="bio-photo">
-
-        <div class="bio-text">
-          <h2 class="bio-name" id="alex-heading">Alex Drost</h2>
-          <span class="person-subtitle">The one with the audiobooks.</span>
-          <p>Alex works in the middle-market professional world and has spent the better part of two decades thinking about companies, the people who run them, and what it takes to build something that lasts. He does not talk about work at parties.</p>
-          <p>Outside the office, he is most likely somewhere on I-75 with Henry in the passenger seat and an audiobook queued up. He has developed strong opinions about rest stops, the precise right moment to stop for gas, and whether a given road trip qualifies as a &#8220;real&#8221; road trip &#8212; criteria he has not yet fully published.</p>
-          <div class="pro-links">
-            <a href="https://alexdrost.com" class="pro-link" target="_blank" rel="noopener">Personal Website &#8599;</a>
-            <a href="https://www.linkedin.com/in/adrost/" class="pro-link" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =============================================
-       ABOUT — DENISE
-  ============================================= -->
-  <section id="denise" aria-labelledby="denise-heading">
-    <div class="wrap">
-      <div class="bio-grid photo-right">
-
-        <div class="bio-text">
-          <h2 class="bio-name" id="denise-heading">Denise Drost</h2>
-          <span class="person-subtitle">The one who actually plans things.</span>
-          <!-- TODO: Replace with Denise's actual bio copy -->
-          <p>Denise is a Detroit-area professional with a background that she will describe far better than a placeholder can. What is not in question is that she is the reason the family&#8217;s road trips have an itinerary, the right snacks, and a contingency plan for when the original plan encounters Henry&#8217;s opinions about rest stops.</p>
-          <p>She keeps things running with a level of organizational clarity that Alex finds both impressive and slightly humbling. Henry regards her primarily as the person most likely to share a snack without being formally asked.</p>
-          <div class="pro-links">
-            <a href="https://denisestross.com" class="pro-link" target="_blank" rel="noopener">Personal Website &#8599;</a>
-            <a href="https://www.linkedin.com/in/denisemdrost/" class="pro-link" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a>
-          </div>
-        </div>
-
-        <img
-          src="images/denise-drost-portrait.webp"
-          alt="Denise Drost — Detroit-area professional"
-          class="bio-photo">
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =============================================
-       HENRY
-  ============================================= -->
-  <section id="henry" aria-labelledby="henry-heading">
-    <div class="wrap">
-
-      <div class="henry-intro">
-        <span class="eyebrow">The co-pilot</span>
-        <h2 id="henry-heading">Goldendoodle. Co-pilot.<br>Professional greeter.</h2>
-        <p class="intro-sub">A full section, because he has earned it.</p>
-      </div>
-
-      <div class="henry-grid">
-
-        <img
-          src="images/henry-drost-goldendoodle.webp"
-          alt="Henry — the Drost family goldendoodle"
-          class="henry-photo">
-
-        <div class="henry-body">
-          <p>Henry is a goldendoodle with an extraordinary personality and a geographic footprint that most people would envy. He has logged more highway miles than most adults and has strong, non-negotiable opinions about the optimal rest stop experience. His interests include car rides (any duration, any destination), meeting new people (always), hiking (enthusiastically), and monitoring the kitchen for opportunities (constantly).</p>
-
-          <div class="stats-grid">
-            <div class="stat-card">
-              <span class="stat-label">Breed</span>
-              <span class="stat-value">Goldendoodle (mostly poodle)</span>
+    <!-- HERO SECTION -->
+    <header class="relative overflow-hidden pt-16 pb-24 md:pt-24 md:pb-32">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <span class="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-sage-600 mb-6">EST. DETROIT, MI</span>
+                <h1 class="text-5xl md:text-7xl font-serif text-charcoal leading-[1.1] mb-8">
+                    Three Drosts. <br>
+                    <span class="serif-italic">Endless road trips.</span>
+                </h1>
+                <p class="text-lg text-charcoal/80 leading-relaxed mb-10 max-w-lg">
+                    A Detroit-area family with deep professional roots, a shared appreciation for the open road, and a goldendoodle who monitors every rest stop with professional scrutiny.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#alex" class="px-8 py-4 bg-sage-600 text-white font-semibold rounded-lg hover:bg-sage-700 transition-all hover:shadow-lg hover:-translate-y-0.5">
+                        Meet the family
+                    </a>
+                    <a href="#adventures" class="px-8 py-4 bg-white border border-sage-200 text-charcoal font-semibold rounded-lg hover:bg-sage-50 transition-all">
+                        View our journey
+                    </a>
+                </div>
             </div>
-            <div class="stat-card">
-              <span class="stat-label">Occupation</span>
-              <span class="stat-value">Co-pilot, morale officer, professional greeter</span>
+            <div class="relative fade-in" style="animation-delay: 0.2s;">
+                <div class="absolute -inset-4 bg-sage-100 rounded-2xl -rotate-2 z-0"></div>
+                <img src="alex-denise-drost-family.jpg" 
+                     alt="Alex and Denise Drost" 
+                     class="relative z-10 w-full aspect-[4/5] object-cover rounded-xl shadow-2xl">
             </div>
-            <div class="stat-card">
-              <span class="stat-label">Known for</span>
-              <span class="stat-value">Road trips, meeting strangers, extraordinary enthusiasm</span>
+        </div>
+    </header>
+
+    <!-- ALEX SECTION -->
+    <section id="alex" class="py-24 bg-white border-t border-sage-100">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-5">
+                <img src="alex-drost-portrait.jpg" 
+                     alt="Alex Drost" 
+                     class="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl">
             </div>
-            <div class="stat-card">
-              <span class="stat-label">Territory</span>
-              <span class="stat-value">The Midwest, broadly. Detroit area, specifically.</span>
+            <div class="md:col-span-7 md:pl-8">
+                <span class="text-sage-600 font-serif italic text-xl mb-2 block">The one with the audiobooks.</span>
+                <h2 class="text-4xl font-serif text-charcoal mb-6">Alex Drost</h2>
+                <div class="space-y-6 text-charcoal/80 text-lg leading-relaxed">
+                    <p>Alex navigates the middle-market professional world by day and I-75 by weekend. With nearly two decades of experience building lasting companies, he saves the corporate talk for the office and the road trip planning for the driveway.</p>
+                    <p>Known for his non-negotiable standards for "real" road trips and a meticulously curated collection of audiobooks, Alex is the primary driver and unofficial historian of the family's many travels.</p>
+                </div>
+                <div class="mt-10 flex gap-6">
+                    <a href="https://alexdrost.com" target="_blank" class="flex items-center text-sm font-semibold text-sage-600 hover:text-sage-800 border-b border-transparent hover:border-sage-800 transition-all uppercase tracking-wider">
+                        Personal Site 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/adrost/" target="_blank" class="flex items-center text-sm font-semibold text-sage-600 hover:text-sage-800 border-b border-transparent hover:border-sage-800 transition-all uppercase tracking-wider">
+                        LinkedIn
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =============================================
-       ADVENTURES
-       Omit this section at launch if road trip photos aren't ready.
-       Replace each .placeholder div with an <img> tag and update captions.
-  ============================================= -->
-  <section id="adventures" aria-labelledby="adventures-heading">
-    <div class="wrap">
-
-      <div class="section-intro">
-        <span class="eyebrow">On the road</span>
-        <h2 id="adventures-heading">Adventures</h2>
-        <p class="tagline">Henry has a standing policy: if the car is moving, he is in it.</p>
-      </div>
-
-      <div class="photo-grid">
-
-        <div>
-          <!-- TODO: <img src="images/drost-family-road-trip-[location].jpg" alt="Drost family road trip — [Location]" class="grid-photo"> -->
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 1</span></div>
-          <p class="grid-caption">Location TBD</p>
+    <!-- DENISE SECTION -->
+    <section id="denise" class="py-24 bg-ivory">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-12 gap-12 items-center">
+            <div class="md:col-span-7 md:pr-8 order-2 md:order-1">
+                <span class="text-sage-600 font-serif italic text-xl mb-2 block">The one who actually plans things.</span>
+                <h2 class="text-4xl font-serif text-charcoal mb-6">Denise Drost</h2>
+                <div class="space-y-6 text-charcoal/80 text-lg leading-relaxed">
+                    <p>While Alex handles the driving, Denise handles the mission control. A seasoned professional in the Detroit area, she is the architect behind the family itineraries, ensuring every mile has a purpose and every stop has the perfect snack.</p>
+                    <p>Her organizational clarity keeps the family running smoothly, both in professional spheres and while navigating mountain passes. Henry regards her as his primary advocate for extra treats and spontaneous walks.</p>
+                </div>
+                <div class="mt-10 flex gap-6">
+                    <a href="https://denisedrost.com" target="_blank" class="flex items-center text-sm font-semibold text-sage-600 hover:text-sage-800 border-b border-transparent hover:border-sage-800 transition-all uppercase tracking-wider">
+                        Personal Site 
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/denisemdrost/" target="_blank" class="flex items-center text-sm font-semibold text-sage-600 hover:text-sage-800 border-b border-transparent hover:border-sage-800 transition-all uppercase tracking-wider">
+                        LinkedIn
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="md:col-span-5 order-1 md:order-2">
+                <img src="denise-drost-portrait.webp" 
+                     alt="Denise Drost" 
+                     class="w-full aspect-[3/4] object-cover rounded-2xl shadow-xl">
+            </div>
         </div>
+    </section>
 
-        <div>
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 2</span></div>
-          <p class="grid-caption">Location TBD</p>
-        </div>
-
-        <div>
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 3</span></div>
-          <p class="grid-caption">Location TBD</p>
-        </div>
-
-        <div>
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 4</span></div>
-          <p class="grid-caption">Location TBD</p>
-        </div>
-
-        <div>
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 5</span></div>
-          <p class="grid-caption">Location TBD</p>
-        </div>
-
-        <div>
-          <div class="placeholder grid-photo"><span>Road trip<br>photo 6</span></div>
-          <p class="grid-caption">Location TBD</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- =============================================
-       FIND US
-  ============================================= -->
-  <section id="find-us" aria-labelledby="find-us-heading">
-    <div class="wrap">
-      <div class="find-us-grid">
-
-        <div class="find-us-left">
-          <h2 id="find-us-heading">Find Us</h2>
-
-          <div class="find-us-cards">
-            <div class="find-us-card">
-              <h3>Alex</h3>
-              <ul class="link-list">
-                <li><a href="https://alexdrost.com" target="_blank" rel="noopener">Personal Website &#8599;</a></li>
-                <li><a href="https://www.linkedin.com/in/adrost/" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a></li>
-              </ul>
+    <!-- HENRY SECTION -->
+    <section id="henry" class="py-24 bg-sage-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold tracking-[0.3em] uppercase text-sage-600 mb-4 block">The Co-Pilot</span>
+                <h2 class="text-5xl font-serif text-charcoal mb-4">Henry Drost</h2>
+                <p class="text-charcoal/60 italic font-serif text-lg">"If the car is moving, I am in it."</p>
             </div>
 
-            <div class="find-us-card">
-              <h3>Denise</h3>
-              <ul class="link-list">
-                <li><a href="https://denisestross.com" target="_blank" rel="noopener">Personal Website &#8599;</a></li>
-                <li><a href="https://www.linkedin.com/in/denisemdrost/" target="_blank" rel="noopener">LinkedIn Profile &#8599;</a></li>
-              </ul>
+            <div class="grid md:grid-cols-2 gap-16 items-start">
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-white/50 rounded-2xl rotate-2 transition-transform group-hover:rotate-0"></div>
+                    <img src="henry-drost-goldendoodle.jpg" 
+                         alt="Henry the Goldendoodle" 
+                         class="relative z-10 w-full aspect-[4/5] object-cover rounded-xl shadow-xl">
+                </div>
+                <div class="pt-8">
+                    <p class="text-xl leading-relaxed text-charcoal/80 mb-12">
+                        Henry is a goldendoodle with a geographic footprint that would make most travel influencers jealous. A professional greeter and enthusiast of everything from mountain hikes to suburban strolls, he has logged more highway miles than most adults.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Breed</span>
+                            <span class="text-charcoal font-medium">Goldendoodle (mostly poodle)</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Primary Role</span>
+                            <span class="text-charcoal font-medium">Head of Moral Support</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Special Skills</span>
+                            <span class="text-charcoal font-medium">Snack Monitoring, Greetings</span>
+                        </div>
+                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
+                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Territory</span>
+                            <span class="text-charcoal font-medium">Metro Detroit & The Great Beyond</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </section>
 
-        <!-- Metro Detroit map -->
-        <div class="find-us-map">
-          <iframe
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-83.35%2C42.22%2C-82.88%2C42.52&amp;layer=mapnik"
-            loading="lazy"
-            title="Metro Detroit, Michigan"
-            aria-label="Map showing Metro Detroit, Michigan"></iframe>
+    <!-- ADVENTURES SECTION -->
+    <section id="adventures" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-xl">
+                    <span class="text-xs font-bold tracking-[0.3em] uppercase text-sage-600 mb-4 block">On the Road</span>
+                    <h2 class="text-5xl font-serif text-charcoal mb-6">Adventures</h2>
+                    <p class="text-lg text-charcoal/70">From the lakes of Michigan to the peaks of the West, we document the moments between the miles.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- PHOTO CARDS -->
+                <div class="group cursor-pointer" onclick="openModal('henry-drost-goldendoodle.jpg', 'Henry monitoring a pit stop in Northern Michigan.')">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
+                        <img src="henry-drost-goldendoodle.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Henry's Pit Stop</p>
+                </div>
+                
+                <div class="group cursor-pointer" onclick="openModal('alex-denise-drost-family.jpg', 'Alex and Denise exploring the Detroit Historical District.')">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
+                        <img src="alex-denise-drost-family.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Detroit Excursion</p>
+                </div>
+
+                <div class="group cursor-pointer" onclick="openModal('alex-drost-portrait.jpg', 'Alex and Henry celebrating a successful hike.')">
+                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
+                        <img src="alex-drost-portrait.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
+                    </div>
+                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Summit Success</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-      </div>
+    <!-- PHOTO MODAL -->
+    <div id="photo-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8">
+        <div class="absolute inset-0 bg-charcoal/90 backdrop-blur-sm" onclick="closeModal()"></div>
+        <div class="relative z-10 max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-charcoal/50 hover:text-charcoal transition-colors z-20 bg-white/80 rounded-full p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <div class="w-full bg-ivory">
+                <img id="modal-img" src="" class="w-full h-auto max-h-[70vh] object-contain mx-auto">
+            </div>
+            <div class="p-8 bg-white">
+                <p id="modal-caption" class="text-xl font-serif text-charcoal leading-relaxed"></p>
+            </div>
+        </div>
     </div>
-  </section>
 
+    <!-- FIND US SECTION -->
+    <section id="find-us" class="py-24 bg-ivory border-t border-sage-200">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-5xl font-serif text-charcoal mb-12">Find Us</h2>
+                
+                <div class="space-y-12">
+                    <div class="flex gap-8">
+                        <div class="w-12 h-12 rounded-full bg-sage-600 text-white flex items-center justify-center shrink-0">
+                            <span class="font-serif italic text-xl">A</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Alex</h3>
+                            <ul class="space-y-3">
+                                <li><a href="https://alexdrost.com" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">alexdrost.com <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+                                <li><a href="https://www.linkedin.com/in/adrost/" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">LinkedIn <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-  <!-- =============================================
-       FOOTER
-  ============================================= -->
-  <footer>
-    <p class="footer-text">&copy; Alex Drost &middot; Detroit, Michigan</p>
-  </footer>
+                    <div class="flex gap-8">
+                        <div class="w-12 h-12 rounded-full bg-sage-600 text-white flex items-center justify-center shrink-0">
+                            <span class="font-serif italic text-xl">D</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-charcoal uppercase tracking-widest text-sm mb-4">Denise</h3>
+                            <ul class="space-y-3">
+                                <li><a href="https://denisedrost.com" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">denisedrost.com <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+                                <li><a href="https://www.linkedin.com/in/denisemdrost/" class="text-sage-600 hover:text-sage-800 transition-colors flex items-center">LinkedIn <svg class="w-3 h-3 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-sage-200 rounded-2xl group-hover:-inset-3 transition-all duration-500"></div>
+                <div class="relative h-[400px] w-full bg-white rounded-xl overflow-hidden shadow-xl border border-sage-200">
+                    <iframe
+                        src="https://www.openstreetmap.org/export/embed.html?bbox=-83.35%2C42.22%2C-82.88%2C42.52&amp;layer=mapnik"
+                        class="w-full h-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                        title="Metro Detroit, Michigan">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-sage-800 py-12">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-ivory/60 text-sm">
+                &copy; 2026 Alex Drost &bull; Detroit, MI
+            </div>
+            <div class="flex space-x-8">
+                <a href="#" class="text-ivory/80 hover:text-white transition-colors text-xs font-bold uppercase tracking-widest">Back to top</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('photo-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
+
+        function openModal(imgSrc, caption) {
+            modalImg.src = imgSrc;
+            modalCaption.innerText = caption;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
 
 </body>
 </html>
