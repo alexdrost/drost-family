@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Drost Family — Alex, Denise & Henry | drost.family</title>
     <meta name="description" content="Alex and Denise Drost are Detroit-area professionals and avid road-trippers with a goldendoodle named Henry.">
-    
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Drost Family — Alex, Denise & Henry">
+    <meta property="og:description" content="A Detroit-area family with deep professional roots, a shared love of the open road, and a goldendoodle with very strong opinions.">
+    <meta property="og:image" content="images/alex-denise-drost-family.webp">
+    <meta property="og:type" content="website">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
+    <!-- Preload hero image for faster LCP -->
+    <link rel="preload" as="image" href="images/alex-denise-drost-family.webp">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -48,15 +60,20 @@
         ::-webkit-scrollbar-thumb { background: #D0DCC8; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #4A7A40; }
 
-        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        .fade-in { animation: fadeIn 1.0s ease-out both; }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
 
         /* Modal specific styles */
         #photo-modal.hidden { display: none; }
         #photo-modal.flex { display: flex; }
+
+        /* Adventure cards start invisible; JS animates them in */
+        #adventures-grid .group {
+            opacity: 0;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-sage-200">
@@ -74,6 +91,7 @@
                 <li><a href="#denise" class="hover:text-sage-600 transition-colors">Denise</a></li>
                 <li><a href="#henry" class="hover:text-sage-600 transition-colors">Henry</a></li>
                 <li><a href="#adventures" class="hover:text-sage-600 transition-colors">Adventures</a></li>
+                <li><a href="#find-us" class="hover:text-sage-600 transition-colors">Find Us</a></li>
             </ul>
 
             <button class="md:hidden text-charcoal">
@@ -105,36 +123,13 @@
                     </a>
                 </div>
             </div>
-            <!-- HERO CAROUSEL -->
-            <div class="relative fade-in" style="animation-delay: 0.2s;">
-                <div class="absolute -inset-4 bg-sage-100 rounded-2xl -rotate-2 z-0"></div>
-                <div class="relative z-10 w-full aspect-[4/5] rounded-xl shadow-2xl overflow-hidden" id="hero-carousel">
-
-                    <!-- Slides -->
-                    <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
-                        <img src="images/alex-denise-drost-family.webp"  alt="Alex and Denise Drost"  class="carousel-slide w-full h-full object-cover shrink-0">
-                        <img src="images/alex-drost-portrait.webp"       alt="Alex Drost with Henry"  class="carousel-slide w-full h-full object-cover shrink-0">
-                        <img src="images/denise-drost-portrait.webp"     alt="Denise Drost"           class="carousel-slide w-full h-full object-cover shrink-0">
-                        <img src="images/henry-drost-goldendoodle.webp"  alt="Henry the goldendoodle" class="carousel-slide w-full h-full object-cover shrink-0">
-                        <!-- Slide 5 — replace with images/hero-5.webp when photo is ready -->
-                        <div class="carousel-slide w-full h-full shrink-0 bg-sage-100 flex items-center justify-center">
-                            <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
-                        </div>
-                    </div>
-
-                    <!-- Prev / Next arrows -->
-                    <button onclick="carouselMove(-1)" aria-label="Previous photo"
-                        class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all">
-                        <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                    </button>
-                    <button onclick="carouselMove(1)" aria-label="Next photo"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all">
-                        <svg class="w-4 h-4 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                    </button>
-
-                    <!-- Dot indicators -->
-                    <div class="carousel-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
-
+            <!-- HERO PHOTO -->
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-sage-100 rounded-2xl -rotate-2 z-0 transition-transform duration-500 group-hover:rotate-0"></div>
+                <div class="relative z-10 w-full aspect-[4/5] rounded-xl shadow-2xl overflow-hidden">
+                    <img src="images/alex-denise-drost-family.webp"
+                         alt="Alex and Denise Drost"
+                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 </div>
             </div>
         </div>
@@ -215,14 +210,8 @@
                     <div class="relative z-10 w-full aspect-[4/5] rounded-xl shadow-xl overflow-hidden" id="henry-carousel">
                         <div class="carousel-track flex h-full transition-transform duration-500 ease-in-out">
                             <img src="images/henry-drost-goldendoodle.webp" alt="Henry the Goldendoodle" class="carousel-slide w-full h-full object-cover shrink-0">
-                            <!-- Slide 2 — replace with images/henry-2.webp when ready -->
-                            <div class="carousel-slide w-full h-full shrink-0 bg-sage-200 flex items-center justify-center">
-                                <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
-                            </div>
-                            <!-- Slide 3 — replace with images/henry-3.webp when ready -->
-                            <div class="carousel-slide w-full h-full shrink-0 bg-sage-200 flex items-center justify-center">
-                                <span class="text-xs font-semibold tracking-widest uppercase text-sage-600">Photo coming soon</span>
-                            </div>
+                            <img src="images/Henry-Drost-Puppy-Road-Trip-Front-Seat.webp" alt="Puppy Henry co-piloting" class="carousel-slide w-full h-full object-cover shrink-0">
+                            <img src="images/Henry-Drost-Puppy-Backseat-Car-Window.webp" alt="Puppy Henry on the move" class="carousel-slide w-full h-full object-cover shrink-0">
                         </div>
                         <button onclick="henryCarouselMove(-1)" aria-label="Previous photo"
                             class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-all z-10">
@@ -247,16 +236,8 @@
                             <span class="text-charcoal font-medium">Goldendoodle (regularly mistaken for a Standard Poodle)</span>
                         </div>
                         <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
-                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Primary Role</span>
-                            <span class="text-charcoal font-medium">Head of Moral Support</span>
-                        </div>
-                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
                             <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Special Skills</span>
                             <span class="text-charcoal font-medium">Treat Monitoring, Selective Greetings, Window-Based Surveillance</span>
-                        </div>
-                        <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
-                            <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Territory</span>
-                            <span class="text-charcoal font-medium">Metro Detroit &amp; The Great Beyond</span>
                         </div>
                         <div class="bg-white/80 backdrop-blur p-6 rounded-xl border border-sage-200 transition-all duration-300 hover:bg-white hover:scale-[1.03] hover:border-sage-600 hover:shadow-md cursor-default">
                             <span class="block text-[10px] font-bold tracking-widest text-sage-600 uppercase mb-2">Known For</span>
@@ -275,86 +256,38 @@
     <!-- ADVENTURES SECTION -->
     <section id="adventures" class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-                <div class="max-w-xl">
-                    <span class="text-xs font-bold tracking-[0.3em] uppercase text-sage-600 mb-4 block">On the Road</span>
-                    <h2 class="text-5xl font-serif text-charcoal mb-6">Adventures</h2>
-                    <p class="text-lg text-charcoal/70">From the Great Lakes to the mountains. Every stop gets a photo. Not every photo gets Henry&#8217;s approval.</p>
+            <div class="mb-16 text-center">
+                <span class="text-xs font-bold tracking-[0.3em] uppercase text-sage-600 mb-4 block">On the Road</span>
+                <h2 class="text-5xl font-serif text-charcoal mb-10">Adventures</h2>
+                <div class="relative max-w-3xl mx-auto">
+                    <span class="absolute -top-6 left-0 text-7xl font-serif text-sage-200 leading-none select-none">&ldquo;</span>
+                    <p class="text-xl md:text-2xl font-serif italic text-charcoal/70 leading-relaxed px-10">From the Great Lakes to the mountains. Every stop gets a photo. Not every photo gets Henry&#8217;s approval.</p>
+                    <span class="absolute -bottom-8 right-0 text-7xl font-serif text-sage-200 leading-none select-none">&rdquo;</span>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="adventures-grid">
+                <!-- Cards rendered by JavaScript -->
+            </div>
 
-                <!-- Card 1 -->
-                <div class="group cursor-pointer" onclick="openModal('images/henry-drost-goldendoodle.webp', 'Henry monitoring a pit stop in Northern Michigan.')">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="images/henry-drost-goldendoodle.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Henry's Pit Stop</p>
+            <!-- Pagination controls -->
+            <div class="mt-14 flex flex-col items-center gap-5">
+                <div id="adventures-pagination" class="flex items-center gap-2 flex-wrap justify-center">
+                    <button id="page-prev" onclick="goPage(-1)" aria-label="Previous page"
+                        class="w-10 h-10 rounded-xl bg-stone-500 text-white hover:bg-stone-600 shadow-md hover:shadow-lg transition-all flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <div id="page-numbers" class="flex gap-1.5 flex-wrap justify-center"></div>
+                    <button id="page-next" onclick="goPage(1)" aria-label="Next page"
+                        class="w-10 h-10 rounded-xl bg-stone-500 text-white hover:bg-stone-600 shadow-md hover:shadow-lg transition-all flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="group cursor-pointer" onclick="openModal('images/alex-denise-drost-family.webp', 'Alex and Denise exploring the Detroit Historical District.')">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="images/alex-denise-drost-family.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Detroit Excursion</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group cursor-pointer" onclick="openModal('images/alex-drost-portrait.webp', 'Alex and Henry celebrating a successful hike.')">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl flex items-center justify-center border border-sage-200 group-hover:border-sage-600 transition-all overflow-hidden relative">
-                        <img src="images/alex-drost-portrait.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Summit Success</p>
-                </div>
-
-                <!-- Cards 4–9: placeholders — swap src for images/adventure-4.webp etc. when photos are ready -->
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 4</p>
-                </div>
-
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 5</p>
-                </div>
-
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 6</p>
-                </div>
-
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 7</p>
-                </div>
-
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 8</p>
-                </div>
-
-                <div class="group">
-                    <div class="aspect-[4/3] bg-sage-50 rounded-xl border border-sage-200 border-dashed flex items-center justify-center">
-                        <span class="text-xs font-semibold tracking-widest uppercase text-sage-600/60">Photo coming soon</span>
-                    </div>
-                    <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase">Adventure 9</p>
-                </div>
-
+                <p id="adventures-counter" class="text-xs font-semibold tracking-widest uppercase text-charcoal/30"></p>
             </div>
         </div>
     </section>
@@ -362,15 +295,32 @@
     <!-- PHOTO MODAL -->
     <div id="photo-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 md:p-8">
         <div class="absolute inset-0 bg-charcoal/90 backdrop-blur-sm" onclick="closeModal()"></div>
-        <div class="relative z-10 max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-charcoal/50 hover:text-charcoal transition-colors z-20 bg-white/80 rounded-full p-2">
+        <div class="relative z-10 max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col ring-4 ring-white">
+
+            <!-- Close -->
+            <button onclick="closeModal()" aria-label="Close"
+                class="absolute top-4 right-4 text-charcoal/50 hover:text-charcoal transition-colors z-20 bg-white/80 rounded-full p-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             </button>
-            <div class="w-full bg-ivory">
-                <img id="modal-img" src="" class="w-full h-auto max-h-[70vh] object-contain mx-auto">
+
+            <!-- Image + side arrows -->
+            <div class="w-full bg-ivory relative">
+                <img id="modal-img" src="" alt="" class="w-full h-auto max-h-[70vh] object-contain mx-auto block">
+                <button onclick="modalNav(-1)" aria-label="Previous photo"
+                    class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all z-10">
+                    <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="modalNav(1)" aria-label="Next photo"
+                    class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all z-10">
+                    <svg class="w-5 h-5 text-charcoal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
             </div>
-            <div class="p-8 bg-white">
-                <p id="modal-caption" class="text-xl font-serif text-charcoal leading-relaxed"></p>
+
+            <!-- Caption / location / counter -->
+            <div class="p-6 bg-white text-center">
+                <p id="modal-caption" class="text-xl font-serif text-charcoal leading-relaxed mb-1"></p>
+                <p id="modal-location" class="text-sm font-serif italic text-charcoal/50 mb-3"></p>
+                <p id="modal-counter" class="text-[10px] font-bold tracking-widest uppercase text-charcoal/25"></p>
             </div>
         </div>
     </div>
@@ -413,11 +363,9 @@
             <div class="relative group">
                 <div class="absolute -inset-2 bg-sage-200 rounded-2xl group-hover:-inset-3 transition-all duration-500"></div>
                 <div class="relative h-[400px] w-full bg-white rounded-xl overflow-hidden shadow-xl border border-sage-200">
-                    <iframe
-                        src="https://www.openstreetmap.org/export/embed.html?bbox=-83.35%2C42.22%2C-82.88%2C42.52&amp;layer=mapnik"
-                        class="w-full h-full grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
-                        title="Metro Detroit, Michigan">
-                    </iframe>
+                    <img src="images/Detroit%20Michigan%20Map.jpg"
+                         alt="Metro Detroit, Michigan"
+                         class="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
                 </div>
             </div>
         </div>
@@ -436,30 +384,217 @@
     </footer>
 
     <script>
-        const modal = document.getElementById('photo-modal');
-        const modalImg = document.getElementById('modal-img');
-        const modalCaption = document.getElementById('modal-caption');
+        // ── ADVENTURES DATA ───────────────────────────────────────
+        // pos = object-position for the card thumbnail (default: center 30%)
+        const adventures = [
+            { src: 'images/Henry-Drost-Halloween-Hot-Dog-Costume-Brewery.webp',         title: 'Hot Diggity Dog!',                                      location: 'Grand Rapids, MI',                     pos: 'center 60%' },
+            { src: 'images/Henry-Drost-First-Snow-Autumn-Leaves-Park.webp',              title: 'First Snow of the Season',                              location: 'Grand Rapids, MI' },
+            { src: 'images/Henry-Drost-Giving-Paw-Autumn-Walk.webp',                    title: 'Paws Up for Patio Beers',                               location: 'Grand Rapids, MI' },
+            { src: 'images/Henry-Drost-Rocky-Beach-Wading.webp',                        title: 'We Love a NoMi Beach!',                                 location: 'Lake Superior, Upper Peninsula, MI',   pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Hotel-Treat-Time-Plaid-Bandana.webp',            title: "Hilton's Diamond Doggo Welcome Package",                location: 'Grand Rapids, MI',                     pos: 'center top' },
+            { src: 'images/Henry-Drost-River-Rapids-Soaking-Wet.webp',                  title: 'Cooling Off at Taquamenon Falls',                        location: 'Taquamenon Falls State Park, MI',       pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Hotel-Balcony-Golden-Sunrise.webp',              title: 'Sunrise Balcony Watch',                                  location: 'Grand Rapids, MI',                     pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Hotel-Balcony-Night-City-Lights.webp',           title: 'City Lights from the Balcony',                          location: 'Grand Rapids, MI',                     pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Wind-In-Ears-Car-Window.webp',                   title: 'Windows Down, Radio Up!',                               location: 'Grand Rapids, MI',                     pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Happy-Road-Trip-Backseat.webp',                  title: 'Our Happy Traveler',                                    location: 'Somewhere on I-75 South',               pos: 'center top' },
+            { src: 'images/Henry-Drost-Lake-Beach-Sunny-Swim.webp',                     title: 'An Upper Peninsula Beach Day',                          location: 'Antrim County, MI',                    pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Hotel-Frisbee-Fetch-It-Yourself.webp',           title: 'Fetch It Yourself',                                     location: 'Grand Rapids, MI' },
+            { src: 'images/Henry-Drost-Hotel-Treats-Great-Lakes-Bandana.webp',          title: 'Hotel Welcome Package',                                 location: 'Grand Rapids, MI',                     pos: 'center top' },
+            { src: 'images/Henry-Drost-Botanical-Garden-Art-Sign.webp',                 title: "Why Aren't Dogs Allowed in Museums?",                   location: 'Asheville, NC' },
+            { src: 'images/Henry-Drost-Mountain-Stream-Rocky-Perch.webp',               title: 'Rocky Mountain Explorer',                               location: 'Great Smoky Mountains National Park, TN', pos: 'center 45%' },
+            { src: 'images/Henry-Drost-Hotel-Bed-Nap-Tufted-Headboard.webp',            title: "It's a Ruff Life",                                      location: 'Grand Rapids, MI',                     pos: 'center bottom' },
+            { src: 'images/Henry-Drost-Welcome-to-Barkville.webp',                      title: 'Welcome to Barksville, USA!',                           location: 'Knoxville, TN',                        pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Green-Field-White-Fence.webp',                   title: 'This Rest Stop Passed Inspection',                      location: 'Lexington, KY',                        pos: 'center' },
+            { src: 'images/Henry-Drost-Rocky-Shoreline-Waves.webp',                     title: 'King of the Lake Superior Shore',                       location: "Michigan's Upper Peninsula",            pos: 'center 45%' },
+            { src: 'images/Henry-Drost-Lighthouse-Waterfront.webp',                     title: 'Lighthouse Keeper',                                     location: 'Petoskey, MI',                         pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Dunes-Sunset-Portrait.webp',                     title: "He Thinks He's Superior at Lake Superior",              location: 'Marquette, MI',                        pos: 'center top' },
+            { src: 'images/Henry-Drost-Sunset-Beach-Popsicle-Bandana.webp',             title: 'Sunset on the Shore',                                   location: 'Marquette, MI',                        pos: 'center 65%' },
+            { src: 'images/Henry-Drost-Barkaria-Water-Bowl-Treat.webp',                 title: 'Sipping at the Barkaria',                               location: 'Sault Ste. Marie, MI',                 pos: 'center top' },
+            { src: 'images/Henry-Drost-Grand-River-Autumn-Walk.webp',                   title: 'Autumn on the Grand River',                             location: 'Grand Rapids, MI' },
+            { src: 'images/Henry-Drost-Brewery-Patio-Dog-Treat.webp',                   title: 'Dog Treat Connoisseur',                                 location: 'Asheville, NC' },
+            { src: 'images/Henry-Drost-Forest-Run-Ears-Flying.webp',                    title: 'Full Speed Through Northern Michigan',                  location: 'Traverse City, MI' },
+            { src: 'images/Henry-Drost-Ferry-Ride-Adventure.webp',                      title: 'Ferry Crossing',                                        location: "Michigan's Upper Peninsula",            pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Lake-Ann-Brewing-Patio.webp',                    title: 'Patio Pals at Lake Ann Brewing',                        location: 'Traverse City, MI' },
+            { src: 'images/Henry-Drost-Hotel-Room-Curious-Look.webp',                   title: 'Do I Hear the Treat Bag?',                              location: 'Grand Rapids, MI',                     pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Rocky-Coastline-Fresh-Haircut.webp',             title: 'Fresh Cut at the Coast',                                location: 'St. Ignace, MI',                       pos: 'center top' },
+            { src: 'images/Henry-Drost-Hotel-Library-Lounge.webp',                      title: 'A Literary Hound',                                      location: 'Lansing, MI' },
+            { src: 'images/Henry-Drost-Great-Smoky-Mountains-Foothills-Parkway.webp',   title: 'Smoky Mountains Bound',                                 location: 'Great Smoky Mountains, TN',            pos: 'center 40%' },
+            { src: 'images/Henry-Drost-Grand-Rapids-Riverfront-ACG-Bandana.webp',       title: 'Grand Rapids Riverfront',                               location: 'Grand Rapids, MI',                     pos: 'center 60%' },
+            { src: 'images/Henry-Drost-Snowy-Walk-Snow-On-Face.webp',                   title: 'Snow Nose',                                             location: 'Grand Rapids, MI',                     pos: 'center top' },
+            { src: 'images/Henry-Drost-Fancy-Hotel-Bed-Lounging.webp',                  title: 'Five-Star Lounging',                                    location: 'Lansing, MI',                          pos: 'center top' },
+            { src: 'images/Henry-Drost-Hotel-Elevator-Check-In.webp',                   title: 'Checking In',                                           location: 'Pittsburgh, PA' },
+            { src: 'images/Henry-Drost-Patio-Table-Peek.webp',                          title: 'Peeking for Snacks',                                    location: 'Detroit, MI',                          pos: 'center top' },
+            { src: 'images/Henry-Drost-Red-Barn-Farm-Visit.webp',                       title: 'A Day on the Farm',                                     location: 'Clare, MI',                            pos: 'center' },
+            { src: 'images/Henry-Drost-Co-Pilot-Van-Road-Trip.webp',                    title: 'Van Life Co-Pilot',                                     location: 'Clare, MI',                            pos: 'center top' },
+            { src: 'images/Henry-Drost-Lake-Shore-Beach-Bandana.webp',                  title: 'Shoreline Stroll',                                      location: 'Glen Arbor, MI' },
+            { src: 'images/Henry-Drost-Downtown-Loomis-Sign.webp',                      title: 'Welcome to Downtown Loomis',                            location: 'Loomis, MI' },
+            { src: 'images/Henry-Drost-Winter-Hike-Plaid-Jacket-Boots.webp',            title: 'Dressed for the Trail',                                 location: 'Traverse City, MI',                    pos: 'center 55%' },
+            { src: 'images/Henry-Drost-Autumn-Fall-Leaves-Forest.webp',                 title: 'Fall Foliage Fun',                                      location: 'Somewhere on I-75 South' },
+            { src: 'images/Henry-Drost-Lake-Michigan-Beach-Walk.webp',                  title: 'Lake Michigan Beachcomber',                             location: 'Ludington, MI' },
+            { src: 'images/Henry-Drost-Harbor-Waterfront-Chain-Post.webp',              title: 'Harbor Watch',                                          location: 'Cleveland, OH',                        pos: 'center 45%' },
+            { src: 'images/Henry-Drost-Rock-Hall-of-Fame-Cleveland.webp',               title: 'Our Rock Star in Cleveland',                            location: 'Cleveland, OH' },
+            { src: 'images/Henry-Drost-Snow-Day-Dad-Hug.webp',                          title: 'Snow Day with Dad',                                     location: 'Glen Arbor, MI',                       pos: 'center 50%' },
+            { src: 'images/Henry-Drost-High-Rise-Hotel-City-View.webp',                 title: 'City Views from the Top',                               location: 'Cleveland, OH',                        pos: 'center 70%' },
+        ];
 
-        function openModal(imgSrc, caption) {
-            modalImg.src = imgSrc;
-            modalCaption.innerText = caption;
+        // Shuffle on every page load so order varies between visits
+        (function shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        })(adventures);
+
+        // ── MODAL ─────────────────────────────────────────────────
+        const modal         = document.getElementById('photo-modal');
+        const modalImg      = document.getElementById('modal-img');
+        const modalCaption  = document.getElementById('modal-caption');
+        const modalLocation = document.getElementById('modal-location');
+        const modalCounter  = document.getElementById('modal-counter');
+        let currentIdx = -1;
+
+        function openModal(index) {
+            currentIdx = index;
+            const { src, title, location } = adventures[index];
+            modalImg.src         = src;
+            modalImg.alt         = title;
+            modalCaption.innerText  = title;
+            modalLocation.innerText = location || '';
+            modalCounter.innerText  = `${index + 1} of ${adventures.length}`;
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+        }
+
+        function modalNav(dir) {
+            if (currentIdx < 0) return;
+            openModal((currentIdx + dir + adventures.length) % adventures.length);
         }
 
         function closeModal() {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
+            currentIdx = -1;
         }
 
-        // Close on Escape key
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape')      closeModal();
+            if (!modal.classList.contains('flex')) return;
+            if (e.key === 'ArrowLeft')   modalNav(-1);
+            if (e.key === 'ArrowRight')  modalNav(1);
         });
 
-        // ── CAROUSEL FACTORY ───────────────────────────────────────
+        // ── ADVENTURES PAGINATION ─────────────────────────────────
+        const grid        = document.getElementById('adventures-grid');
+        const counterEl   = document.getElementById('adventures-counter');
+        const pageNumsEl  = document.getElementById('page-numbers');
+        const pagePrevBtn = document.getElementById('page-prev');
+        const pageNextBtn = document.getElementById('page-next');
+        const PER_PAGE    = 6;
+        const TOTAL_PAGES = Math.ceil(adventures.length / PER_PAGE);
+        let currentPage   = 0;
+
+        function esc(s) {
+            return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        function makeCard(i) {
+            const { src, title, pos } = adventures[i];
+            const objPos = pos || 'center 30%';
+            const card = document.createElement('div');
+            card.className = 'group cursor-pointer';
+            card.innerHTML = `
+                <div class="aspect-[4/3] bg-sage-50 rounded-xl overflow-hidden relative border border-sage-100 group-hover:border-sage-600 transition-all">
+                    <img loading="lazy" src="${src}" alt="${esc(title)}"
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                         style="object-position:${objPos}">
+                    <div class="absolute inset-0 bg-sage-800/0 group-hover:bg-sage-800/20 transition-colors"></div>
+                </div>
+                <p class="mt-4 text-xs font-bold tracking-widest text-charcoal/40 uppercase text-center">${esc(title)}</p>`;
+            card.addEventListener('click', () => openModal(i));
+            return card;
+        }
+
+        function renderPage(page, direction) {
+            // direction: 1 = forward, -1 = backward, 0 = initial
+            const outY  = direction >= 0 ? '-12px' : '12px';
+            const inY   = direction >= 0 ?  '16px' : '-16px';
+
+            // Fade out existing cards
+            const existing = Array.from(grid.children);
+            if (existing.length && direction !== 0) {
+                existing.forEach(card => {
+                    card.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                    card.style.opacity    = '0';
+                    card.style.transform  = `translateY(${outY})`;
+                });
+            }
+
+            const delay = (existing.length && direction !== 0) ? 220 : 0;
+
+            setTimeout(() => {
+                grid.innerHTML = '';
+                const start = page * PER_PAGE;
+                const end   = Math.min(start + PER_PAGE, adventures.length);
+                for (let i = start; i < end; i++) {
+                    const card = makeCard(i);
+                    card.style.cssText = `opacity:0;transform:translateY(${inY});transition:none;`;
+                    grid.appendChild(card);
+                    const col = (i - start) % 3;
+                    // Double rAF ensures the browser has painted the initial state
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        card.style.transition = `opacity 0.45s ease ${col * 65}ms, transform 0.45s ease ${col * 65}ms`;
+                        card.style.opacity    = '1';
+                        card.style.transform  = 'translateY(0)';
+                    }));
+                }
+
+                // Counter
+                counterEl.innerText = `${start + 1}–${end} of ${adventures.length}`;
+
+                // Prev / Next state
+                pagePrevBtn.disabled = page === 0;
+                pagePrevBtn.style.opacity = page === 0 ? '0.3' : '1';
+                pagePrevBtn.style.pointerEvents = page === 0 ? 'none' : '';
+                pageNextBtn.disabled = page === TOTAL_PAGES - 1;
+                pageNextBtn.style.opacity = page === TOTAL_PAGES - 1 ? '0.3' : '1';
+                pageNextBtn.style.pointerEvents = page === TOTAL_PAGES - 1 ? 'none' : '';
+
+                // Page number buttons
+                pageNumsEl.querySelectorAll('button').forEach((btn, i) => {
+                    const active = i === page;
+                    btn.className = active
+                        ? 'w-9 h-9 rounded-xl text-sm font-semibold bg-sage-600 text-white border border-sage-600 transition-all'
+                        : 'w-9 h-9 rounded-xl text-sm font-medium text-charcoal/50 border border-sage-200 hover:border-sage-600 hover:text-sage-600 hover:bg-sage-50 transition-all';
+                });
+
+                currentPage = page;
+            }, delay);
+        }
+
+        function goPage(dir) {
+            const next = currentPage + dir;
+            if (next < 0 || next >= TOTAL_PAGES) return;
+            renderPage(next, dir);
+        }
+
+        // Build page number buttons once
+        for (let p = 0; p < TOTAL_PAGES; p++) {
+            const btn = document.createElement('button');
+            btn.textContent = p + 1;
+            btn.setAttribute('aria-label', `Page ${p + 1}`);
+            const pg = p;
+            btn.addEventListener('click', () => {
+                const dir = pg > currentPage ? 1 : -1;
+                renderPage(pg, dir);
+            });
+            pageNumsEl.appendChild(btn);
+        }
+
+        renderPage(0, 0); // initial render
+
+        // ── CAROUSEL FACTORY ──────────────────────────────────────
         function initCarousel(containerId, interval) {
             const container = document.getElementById(containerId);
             if (!container) return { move: () => {} };
@@ -496,12 +631,33 @@
             return { move: (dir) => goTo(current + dir) };
         }
 
-        const heroCarousel  = initCarousel('hero-carousel', 5000);
-        window.carouselMove = (dir) => heroCarousel.move(dir);
-
         const henryCarousel      = initCarousel('henry-carousel', 6000);
         window.henryCarouselMove = (dir) => henryCarousel.move(dir);
-        // ────────────────────────────────────────────────────────────
+
+        // ── MOBILE NAV TOGGLE ─────────────────────────────────────
+        const mobileMenuBtn = document.querySelector('nav button');
+        const mobileMenu    = document.querySelector('nav ul');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                if (isOpen) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex','flex-col','absolute','top-20','left-0','right-0',
+                        'bg-ivory','border-b','border-sage-200','px-6','py-4','space-y-4','z-40');
+                } else {
+                    mobileMenu.classList.remove('hidden','space-x-10');
+                    mobileMenu.classList.add('flex','flex-col','absolute','top-20','left-0','right-0',
+                        'bg-ivory','border-b','border-sage-200','px-6','py-4','space-y-4','z-40');
+                }
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden','space-x-10');
+                    mobileMenu.classList.remove('flex','flex-col','absolute','top-20','left-0','right-0',
+                        'bg-ivory','border-b','border-sage-200','px-6','py-4','space-y-4','z-40');
+                });
+            });
+        }
     </script>
 
 </body>
